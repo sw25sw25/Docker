@@ -13,6 +13,7 @@ Thanks to
 - sean
 - Mr Ju SS
 - OSS Members
+- 한글
 
 
 
