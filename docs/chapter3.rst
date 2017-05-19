@@ -1,5 +1,3 @@
-.. _`LinuxCMD`:
-
 chapter 3 :MariaDB
 ============================
 
