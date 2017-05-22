@@ -55,3 +55,11 @@ sw_test 데이터베이스의 tbl_a테이블의 emp_no가 100 이상 200이하�
 ::
 
     mysqldump -uroot -p sw_test --no-data > backup_sw_test_definition.sql
+
+
+테스트
+::
+
+	aerkjhkabhcmew
+
+쓰기
