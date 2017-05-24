@@ -23,12 +23,12 @@ CentOS 버전 확인
 기존 자바 설치 파일 확인
 ::
 
- yum list installed java*jdk
+ rpm -qa | grep java
 
 확인된 기존 자바 삭제
 ::
 
- yum remove 검색된 openjdk 이름
+ yum remove 검색된openjdk이름
 
 자바.tar.gz 압축 풀기(/usr/local) 및 심볼릭 링크
 ::
@@ -100,7 +100,7 @@ CentOS 버전 확인
  # processname: tomcat
 
  # Get Config
- [ -f 톰캣폴더/conf/server.xml ] && [ -f 톰캣폴더/conf/web.xml ] || exit 0
+ [ -f /usr/local/tomcat/conf/server.xml ] && [ -f /usr/local/tomcat/conf/web.xml ] || exit 0
 
  source /etc/profile
 
@@ -159,6 +159,12 @@ CentOS 버전 확인
 
  exit $RETVAL
 
+실행권한 부여
+::
+
+ chmod u+x /etc/rc.d/init.d/tomcat
+ chmod 755 /etc/rc.d/init.d/tomcat
+
 작동 테스트
 ::
 
@@ -176,10 +182,11 @@ chkconfig 등록
 
  * 만약 3~5번이 활성화 되있지 않다면, chkconfig --level 345 tomcat on
 
-8080 포트 확인
+8080 포트 확인 및 프로세스 확인
 ::
 
  netstat -ntl
+ ps -ef | grep tomcat
 
 
 1.1.4 MariaDB 설치(tar.gz)
@@ -349,8 +356,153 @@ perl-DBI 설치 및 MariaDB 설치
 1.1.6  아파치 설치
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+기존 아파치 설치 파일 확인
+::
+
+ rpm -qa | grep httpd
+
 기존 httpd 삭제
 ::
 
- yum remove httpd
+ rpm -e --nodeps 검색된httpd이름
 
+httpd 설치
+::
+
+ rpm -ivh httpd-*
+
+기본 설정
+::
+
+ vim /etc/httpd/conf/httpd.conf
+
+아파치에서 .php 파일 등 연결
+::
+
+ AddType application/x-httpd-php .php .ph .phtml .php3 .php4 .sql .inc .html .htm
+ AddType application/x-httpd-php-source .phps
+
+ServerName 변경
+::
+
+ ServerName 127.0.0.1:80
+
+방화벽 설정
+::
+
+ vim /etc/sysconfig/iptables
+
+ -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+
+ /etc/init.d/iptables restart
+
+자동실행 설정
+::
+
+ chkconfig httpd on
+ chkconfig --list httpd
+ httpd    0:off	1:off	2:on	3:on	4:on	5:on	6:off
+
+동작 확인
+::
+
+ ps -ef | grep httpd
+
+
+1.1.7 mod_JK
+~~~~~~~~~~~~~~~~~~~~~~~
+
+파일 복사
+::
+
+ /etc/httpd/modules/mod_jk.so
+
+ SELinux 를 사용한다면 mod_jk.so 에 httpd_modules_t Context 가 설정되어야 apache httpd 가 읽을 수 있다. 다음 명령어로 설정하자.
+ chcon -u system_u -r object_r -t httpd_modules_t /etc/httpd/modules/mod_jk.so
+
+Apache 웹서버에서 mod_jk 설정
+::
+LoadModule jk_module modules/mod_jk.so
+ vim /etc/httpd/conf/httpd.conf
+
+ LoadModule jk_module modules/mod_jk.so
+
+ ServerName localhost
+
+ include /etc/httpd/conf.d/mod_jk.conf
+
+ vim /etc/httpd/conf.d/mod_jk.conf
+
+ <IfModule mod_jk.c>
+  # Where to find workers.properties
+  # JkWorkersFile /etc/httpd/conf/workers_jk.properties
+
+  # Where to put jk shared memory
+  JkShmFile run/mod_jk.shm
+
+  # Where to put jk logs
+  JkLogFile logs/mod_jk.log
+
+  # Set the jk log level [debug/error/info]
+  JkLogLevel info
+
+  # Select the timestamp log format
+  JkLogStampFormat "[%a %b %d %H:%M:%S %Y] "
+
+  # If you want to put all mounts into an external file
+  # that gets reloaded automatically after changes
+  # (with a default latency of 1 minute),
+  # you can define the name of the file here.
+  JkMountFile /etc/httpd/conf/uriworkermap.properties
+ </IfModule>
+
+mod_jk worker 설정
+::
+
+ vim /etc/httpd/conf/workers_jk.properties
+
+ worker.list=worker1, worker2
+
+ worker.worker1.port=8009
+ worker.worker1.host=server1
+ worker.worker1.type=ajp13
+ worker.worker1.lbfactor=1
+
+ ## server 2
+ worker.worker2.port=8009
+ worker.worker2.host=server2
+ worker.worker2.type=ajp13
+ worker.worker2.lbfactor=1
+
+톰캣 연결 설정
+::
+
+ vim /usr/local/tomcat/conf/server.xml
+ tomcat 은 기본 URIEncoding 이 ISO-8859-1 이므로 한글이 깨지므로 모든 커넥터 설정에 URIEncoding="UTF-8" 을 추가해야 한다.
+ <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" URIEncoding="UTF-8"/>
+
+어떤 url 요청에 대해 tomcat 과 연계할지 설정한다.
+::
+
+ vim /etc/httpd/conf/uriworkermap.properties
+ ## Mapping the URI /service1 under worker1
+ /service1/*.do=worker1
+ /service1/*.jsp=worker1
+
+ # /service2 요청으로 들어온 것은 worker2 로 mount
+ /service2/*=worker2
+
+ # png와 jpg 는 apache 가 처리
+ !/service2/*.png=worker2
+ !/service2/*.jpg=worker2
+
+ ## 아래와 같이 설정하면 모든 요청(jsp, do, image, js등)을 tomcat으로 보내서 처리한다.
+ # /*=worker1
+
+테스트
+::
+
+ apachectl start
+ catalina.sh start
+
+ http://아이피/index.jsp 으로 호출이 되면 성공
