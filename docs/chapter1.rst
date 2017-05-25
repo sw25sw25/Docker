@@ -99,6 +99,11 @@ CentOS 버전 확인
  # description: init file for tomcat
  # processname: tomcat
 
+ export JAVA_HOME=/usr/local/java
+ export CATALINA_HOME=/usr/local/tomcat
+ export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$CATALINA_HOME/lib-jsp-api.jar:$CATALINA_HOME/lib/servlet-api.jar
+ export PATH=$PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
+
  # Get Config
  [ -f /usr/local/tomcat/conf/server.xml ] && [ -f /usr/local/tomcat/conf/web.xml ] || exit 0
 

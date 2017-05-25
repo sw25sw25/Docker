@@ -1,10 +1,90 @@
 chapter 3 :MariaDB
 ============================
 
-3.1 MySQL/MariaDB 백업 & 복원
+3.1 기본 설정
+-------------------------------
+
+3.1.1 UTF8 설정
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+ MariaDB :: show variables like 'c%';
+
+ vim /etc/my.cnf.d/server.cnf
+
+ [mysqld]
+ init_connect = SET collation_connection = utf8_general_ci
+ character-set-server = utf8
+ collation-server = utf8_general_ci
+ init_connect = SET NAMES utf8
+
+ #데이터베이스 대소문자 구분 안함 설정
+ lower_case_table_names = 1
+
+ vim /etc/my.cnf.d/mysql-clients.cnf
+
+ [client]
+ default-character-set = utf8
+
+3.1.2 대소문자 구분 설정
+
+3.2 사용자 추가/삭제 & 권한
+----------------------------------
+
+3.2.1 사용자 추가/삭제
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+사용자 확인
+::
+
+ root 계정으로 접속
+ mysql -uroot -p
+
+ use mysql;
+ select host, user, password from user;
+
+ host는 사용자 아이디 뒤에 @localhost, '%'에 따라서 외부 접근이 허용되는 권한을 줄 수 있다.
+ localhost는 내부접근, '%'는 외부접근
+
+사용자 추가
+::
+
+ create user 사용자아이디@localhost identified by 'password';
+                            '%'
+
+사용자 삭제
+::
+
+ delete from user where user ='사용자아이디';
+
+
+3.2.2 데이터베이스 사용권한
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+데이터베이스 사용권한 부여
+::
+
+ grant all privileges on 데이터베이스.테이블 to 사용자아이디@호스트 identified by '패스워드';
+ 모든 테이블 *, 모든 호스트'%'
+
+ 변경된 권한 적용
+ flush privileges;
+
+데이터베이스 사용권한 삭제
+::
+
+ revoke all on 데이터베이스.테이블 from 사용자이름@호스트
+
+권한 확인
+::
+
+ show grants for 사용자아이디@'%';
+
+
+3.3 MySQL/MariaDB 백업 & 복원
 ------------------------
 
-3.1.1 Windows
+3.3.1 Windows
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 MariaDB 설치 폴더에서 bin폴더 cmd 실행 후 작업
@@ -19,7 +99,7 @@ MariaDB 설치 폴더에서 bin폴더 cmd 실행 후 작업
 
     mysql -uroot -p123 --default-character-set="utf8" nbsf_dev < D:\Algorithm\nbsf20170215
 
-3.1.2 Linux
+3.3.2 Linux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
@@ -56,58 +136,3 @@ sw_test 데이터베이스의 tbl_a테이블의 emp_no가 100 이상 200이하�
 
     mysqldump -uroot -p sw_test --no-data > backup_sw_test_definition.sql
 
-
-테스트
-::
-
-	aerkjhkabhcmew
-
-쓰기
-
-3.1.3 MariaDB 계정 생성
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-사용자 추가
-::
-
- GRANT ALL PRIVILEGES ON dbname.* TO username@localhost IDENTIFIED BY 'password';
-                   데이터베이스.권한 사용자아이디@호스트               패스워드
- username(사용자아이디)은 dbname(데이터베이스)에 대해 모든 권한을 가지고 있고, localhost에만 접속할 수 있다.
- 모든 호스트에 접속하려면 localhost 대신 ‘%’ 입력
-
-사용자 삭제
-::
-
- DLETE FROM USER WHERE USER='username';
- FLUSH PRIVILEGES;
-
-MariaDB UTF8 설정
-::
-
- MariaDB :: show variables like 'c%';
-
- vim /etc/my.cnf.d/server.cnf
-
- [mysqld]
- init_connect = SET collation_connection = utf8_general_ci
- character-set-server = utf8
- collation-server = utf8_general_ci
- init_connect = SET NAMES utf8
-
- vim /etc/my.cnf.d/mysql-clients.cnf
-
- [client]
- default-character-set = utf8
-
-
-
-
-
-
-
-spc 사용
-::
-
- scp -P 25109 root@180.182.63.23:/home/mysql/ ./
- scp nbsf2_20170524 -p 10420 root@110.93.129.14:/home/mysql/
- scp root@10.10.131.138:/drives/e/nbsf2_20170524 /root/mariadb_backup
