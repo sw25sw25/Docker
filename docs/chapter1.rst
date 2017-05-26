@@ -427,7 +427,7 @@ ServerName 변경
 
 Apache 웹서버에서 mod_jk 설정
 ::
-LoadModule jk_module modules/mod_jk.so
+
  vim /etc/httpd/conf/httpd.conf
 
  LoadModule jk_module modules/mod_jk.so

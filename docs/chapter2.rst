@@ -41,14 +41,20 @@ export CATALINA_OPTS="-Denv=product -Denv.servername=projectTomcat"
 
  unset JAVA_HOME
 
-2.1.2 SPC
+2.1.2 SCP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-spc 사용
+scp 사용
 ::
 
+ 윈도우 접속 상태에서 파일 전송
+ scp -옵션 [옮길파일] [서버계정@서버아이피:/저장공간]
+ -r : 폴더 복사
+ -v : 복사 과정
+ -P : 포트 번호
+
  scp -P 25109 root@180.182.63.23:/home/mysql/ ./
- scp nbsf2_20170524 -p 10420 root@110.93.129.14:/home/mysql/
+ scp nbsf2_20170524 -P 10420 root@110.93.129.14:/home/mysql/
  scp root@10.10.131.138:/drives/e/nbsf2_20170524 /root/mariadb_backup
 
 기타
