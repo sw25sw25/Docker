@@ -1,4 +1,4 @@
-chapter 1: 설치
+chapter 1 : 설치
 ==================
 
 1.1 CentOS

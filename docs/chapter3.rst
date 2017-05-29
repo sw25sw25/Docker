@@ -1,4 +1,4 @@
-chapter 3 :MariaDB
+chapter 3 : MariaDB
 ============================
 
 3.1 기본 설정
