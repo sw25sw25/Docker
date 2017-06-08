@@ -249,7 +249,7 @@ my.cnf 복사
 실행데몬 복사
 ::
 
-  cp 마리아폴더/support-files/mysql.server /etc/init.d/mysqld
+ cp 마리아폴더/support-files/mysql.server /etc/init.d/mysqld
 
 사용자 권한 설정(선택)
 ::

@@ -5,6 +5,7 @@ chapter 2 : 명령어
 --------------------------
 
 2.1.1 IP 설정
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 IP 설정
 ::
@@ -86,10 +87,8 @@ SSH 고정IP
  date -s 년-월-일
  이 경우 시간이 00:00:00
 
-export JAVA_OPTS="-Djava.awt.headless=true -server -Xms2048m -Xmx4096m -XX:NewSize=512m -XX:MaxNewSize=1024m -XX:PermSize=512m -XX:MaxPermSize=1024m -XX:+DisableExplicitGC"
-export CATALINA_OPTS="-Denv=product -Denv.servername=projectTomcat"
 
-2.1.3 경로 설정
+2.1.3 시스템 경로 설정
 ~~~~~~~~~~~~~~~~~~~
 
 경로 확인
@@ -121,7 +120,75 @@ scp 사용
  scp nbsf2_20170524 -P 10420 root@110.93.129.14:/home/mysql/
  scp root@10.10.131.138:/drives/e/nbsf2_20170524 /root/mariadb_backup
 
-2.1.5 기타
+2.1.5 시스템 정보 확인
+~~~~~~~~~~~~~~~~~~~~~~~
+시스템 정보보기
+::
+
+ dmidecode |more
+
+리눅스 커널 종류 보기
+::
+
+ uname -a
+
+리눅스 OS 버전 확인
+::
+
+ cat /etc/issue.net
+
+리눅스 CPU 정보 확인
+::
+
+ cat /proc/cpuinfo |grep model
+
+리눅스 메모리 정보
+::
+
+ cat /proc/meminfo
+
+리눅스 배포버전 확인
+::
+
+ cat /proc/sys/kernel/osrelease
+
+리눅스 디스크 정보 확인
+::
+
+ cat /proc/diskstats
+
+리눅스 하드디스크 파티션 용량 확인
+::
+
+ cat /proc/partitions
+
+리눅스 모듈확인
+::
+
+ lsmod
+
+부팅할때 읽어들인 하드웨어 정보확인
+::
+
+ dmesg
+
+사용자 정보보기
+::
+
+ cat /etc/passwd
+
+설정 보기
+::
+
+ 하드 설정 전체 보기
+ ulimit -Ha
+
+ 소프트 설정 전체 보기
+ ulimit -Sa
+
+ =>하드는 해당쉘의 최대값을 뜻한다 하면 되고,  소프트는 현재 설정을 말한다 생각하면 된다.
+
+2.1.6 기타
 ~~~~~~~~~~~~~~~~~~~~~~
 
 UTF8 확인
@@ -180,4 +247,9 @@ SELinux
  -mtime n일 이상 변경되지 않은 파일
  -atime n일 이상 엑세스되지 않은 파일
 
- find 경로 -
+권한 설정
+::
+
+ chown 사용자.그룹 -R 폴더
+ chmod 755 -R 폴더
+
