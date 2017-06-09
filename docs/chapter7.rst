@@ -98,3 +98,18 @@ Windows에서 cmd 실행
 
  톰캣 restart
 
+톰캣 시작 페이지 설정
+::
+
+ </Host> 앞에
+ <Context path="/" docBase="/usr/local/apache-tomcat-7.0.78/webapps/AMS-1.0" debug="0" reloadable="true" />
+
+톰캣 매니저 권한
+::
+
+ vim $CATALINA_HOME/conf/tomcat-users.xml
+ <tomcat-users>
+ <role rolename="admin-gui"/>
+ <role rolename="manager-gui"/>
+ <user username="이름" password="패스워드" roles=" admin-gui ,manager-gui"/>
+ </tomcat-users>

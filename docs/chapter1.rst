@@ -104,6 +104,12 @@ CentOS 버전 확인
  export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$CATALINA_HOME/lib-jsp-api.jar:$CATALINA_HOME/lib/servlet-api.jar
  export PATH=$PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
 
+ export JAVA_OPTS="-Djava.awt.headless=true -server -Xms2048m -Xmx4096m -XX:NewSize=512m -XX:MaxNewSize=1024m -XX:PermSize=512m -XX:MaxPermSize=1024m -XX:+DisableExplicitGC"
+ #export JAVA_OPTS="-Djava.awt.headless=true -server -Xms2048m -Xmx4096m -XX:NewSize=512m -XX:MaxNewSize=1024m -XX:PermSize=512m -XX:MaxPermSize=1024m -XX:+DisableExplicitGC -Dscouter.config=/usr/local/apache-tomcat-7.0.78/scouter/scouter.conf"
+
+ export CATALINA_OPTS="-Denv=product -Denv.servername=projectTomcat"
+ #export CATALINA_OPTS="-Denv=product -Denv.servername=projectTomcat -javaagent:/usr/local/apache-tomcat-7.0.78/lib/scouter.agent.jar "
+
  # Get Config
  [ -f /usr/local/tomcat/conf/server.xml ] && [ -f /usr/local/tomcat/conf/web.xml ] || exit 0
 

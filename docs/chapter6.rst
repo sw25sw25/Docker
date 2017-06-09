@@ -4,6 +4,20 @@ chapter 6 : 프로젝트 지원
 6.1 레드마인 설정
 ----------------------------
 
+플러그인
+::
+
+ export PATH=/opt/redmine-3.2.3-1/ruby/bin
+
+ cd /opt/redmine-3.2.3-1/apps/redmine/htdocs
+ bundle install --without development test postgresql sqlite
+ ruby bin/rake redmine:plugins RAILS_ENV=production
+
+ cd /opt/redmine-3.2.3-1/apps/redmine/htdocs
+ bundle install --without development test postgresql sqlite --no-deployment
+ bundle install --without development test postgresql sqlite --deployment
+ ruby bin/rake redmine:plugins RAILS_ENV=production
+
 6.1.1 메일 설정
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

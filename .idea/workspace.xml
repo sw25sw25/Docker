@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/docs/chapter6.rst" line="12" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/docs/chapter6.rst" line="26" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fd254a3-8dc8-44be-b982-c1de39ee8d44" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/chapter4.rst" afterPath="$PROJECT_DIR$/docs/chapter4.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/chapter1.rst" afterPath="$PROJECT_DIR$/docs/chapter1.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/chapter6.rst" afterPath="$PROJECT_DIR$/docs/chapter6.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/chapter7.rst" afterPath="$PROJECT_DIR$/docs/chapter7.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="docker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,8 +34,8 @@
       <file leaf-file-name="chapter1.rst" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/chapter1.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6861" max-vertical-offset="9842">
-              <caret line="359" column="0" selection-start-line="359" selection-start-column="0" selection-end-line="359" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1596" max-vertical-offset="9956">
+              <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -51,17 +54,17 @@
       <file leaf-file-name="chapter3.rst" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/chapter3.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4233" max-vertical-offset="4864">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3846" max-vertical-offset="4864">
               <caret line="235" column="1" selection-start-line="235" selection-start-column="1" selection-end-line="235" selection-end-column="109" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chapter4.rst" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="chapter4.rst" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/chapter4.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4965157" vertical-offset="228" max-vertical-offset="1938">
+            <state vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="1938">
               <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
@@ -71,7 +74,7 @@
       <file leaf-file-name="chapter5.rst" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/chapter5.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2052" max-vertical-offset="3363">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3363">
               <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
@@ -81,18 +84,18 @@
       <file leaf-file-name="chapter6.rst" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/chapter6.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="456" max-vertical-offset="2489">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2755">
+              <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chapter7.rst" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="chapter7.rst" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/docs/chapter7.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="2014">
-              <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.5696864" vertical-offset="1649" max-vertical-offset="2299">
+              <caret line="104" column="88" selection-start-line="104" selection-start-column="88" selection-end-line="104" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -116,12 +119,12 @@
         <option value="$PROJECT_DIR$/docs/index.rst" />
         <option value="$PROJECT_DIR$/docs/chapter0.rst" />
         <option value="$PROJECT_DIR$/docs/chapter5.rst" />
-        <option value="$PROJECT_DIR$/docs/chapter7.rst" />
-        <option value="$PROJECT_DIR$/docs/chapter1.rst" />
-        <option value="$PROJECT_DIR$/docs/chapter6.rst" />
         <option value="$PROJECT_DIR$/docs/chapter3.rst" />
         <option value="$PROJECT_DIR$/docs/chapter2.rst" />
         <option value="$PROJECT_DIR$/docs/chapter4.rst" />
+        <option value="$PROJECT_DIR$/docs/chapter6.rst" />
+        <option value="$PROJECT_DIR$/docs/chapter1.rst" />
+        <option value="$PROJECT_DIR$/docs/chapter7.rst" />
       </list>
     </option>
   </component>
@@ -778,24 +781,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/chapter1.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6861" max-vertical-offset="9842">
-          <caret line="359" column="0" selection-start-line="359" selection-start-column="0" selection-end-line="359" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1596" max-vertical-offset="9956">
+          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/chapter3.rst">
+    <entry file="file://$PROJECT_DIR$/docs/chapter6.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4233" max-vertical-offset="4864">
-          <caret line="235" column="1" selection-start-line="235" selection-start-column="1" selection-end-line="235" selection-end-column="109" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/chapter7.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2014">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2755">
+          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -808,6 +803,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/docs/chapter4.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="1938">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/chapter3.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4233" max-vertical-offset="4864">
+          <caret line="235" column="1" selection-start-line="235" selection-start-column="1" selection-end-line="235" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/docs/chapter2.rst">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3701" max-vertical-offset="5624">
@@ -816,18 +827,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/chapter6.rst">
+    <entry file="file://$PROJECT_DIR$/docs/chapter7.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="456" max-vertical-offset="2489">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/chapter4.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4965157" vertical-offset="228" max-vertical-offset="1938">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5696864" vertical-offset="1649" max-vertical-offset="2299">
+          <caret line="104" column="88" selection-start-line="104" selection-start-column="88" selection-end-line="104" selection-end-column="88" />
           <folding />
         </state>
       </provider>
