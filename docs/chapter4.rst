@@ -24,6 +24,8 @@ chapter 4 : 알고리즘
 개발서버 알고리즘
 ::
 
+ vim /etc/init.d/algosvc
+
  #!/bin/bash
  # description: ITX
  # chkconfig: 2345 20 80
