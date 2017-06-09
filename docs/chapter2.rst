@@ -188,7 +188,42 @@ scp 사용
 
  =>하드는 해당쉘의 최대값을 뜻한다 하면 되고,  소프트는 현재 설정을 말한다 생각하면 된다.
 
-2.1.6 기타
+2.1.6 시간(ntp)
+~~~~~~~~~~~~~~~~~~~~~~~
+설정
+::
+
+ vim /etc/ntp.conf
+
+ server kr.pool.ntp.org
+ server time.bora.net
+ server time.kornet.net
+
+서비스 등록
+::
+
+ chkconfig ntpd on
+
+ 확인
+ chkconfig --list | grep ntpd
+ ntpd   0:해제 1:해제 2:활성 3:활성 4:활성 5:활성 6:해제
+
+서비스 시작
+::
+
+ service ntpd start
+
+동기화 확인
+::
+
+ ntpq -p
+
+ * : 현재 sync 를 받고 있음을 의미
+ + : ntp 알고리즘에 의해 접속은 가능하지만 sync 를 하고 있지는 않음을 의미
+ - : ntp 알고리즘에 의해 접속은 가능하지만 sync 가능 리스트에서 제외
+ blank : 접속이 불가능함을 의미
+
+2.1.7 기타
 ~~~~~~~~~~~~~~~~~~~~~~
 
 UTF8 확인
