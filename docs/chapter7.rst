@@ -98,13 +98,19 @@ Windows에서 cmd 실행
 
  톰캣 restart
 
-톰캣 시작 페이지 설정
+7.2.2 톰캣 시작페이지 설정
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+8080 시작페이지 설정
 ::
 
  </Host> 앞에
  <Context path="/" docBase="/usr/local/apache-tomcat-7.0.78/webapps/AMS-1.0" debug="0" reloadable="true" />
 
-톰캣 매니저 권한
+7.2.3 톰캣 매니저 권한
+~~~~~~~~~~~~~~~~~~~~~~~
+
+매니저 권한 설정
 ::
 
  vim $CATALINA_HOME/conf/tomcat-users.xml
@@ -113,3 +119,22 @@ Windows에서 cmd 실행
  <role rolename="manager-gui"/>
  <user username="이름" password="패스워드" roles=" admin-gui ,manager-gui"/>
  </tomcat-users>
+
+7.3 vboxvmservice(VirtualBox 자동실행)
+----------------------------------------
+
+7.3.1 설정
+~~~~~~~~~~~~~~~~~~~~
+
+http://blog.djjproject.com/184
+
+서비스 설정
+::
+
+ C:\vms\VBoxVmService.ini
+
+ ShutdownMethod=
+ savestate(윈도우 종료시 상태를 저장하고 부팅시 저장된 상태로 다시 시작)
+ acpipowerbutton(VM에 종료명령을 보내 종료 후 윈도우 종료)
+
+

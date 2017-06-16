@@ -66,7 +66,7 @@ SSH 고정IP
  네트워크 재시작
  /etc/rc.d/init.d/network restart
 
-2.1.2 날짜 & 시간 설정
+2.1.2 날짜 & 시간 설정(수동)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 현재 날짜 & 시간 확인
@@ -87,6 +87,42 @@ SSH 고정IP
  date -s 년-월-일
  이 경우 시간이 00:00:00
 
+2.1.3 날짜 & 시간 설정(ntp)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ntp 설정
+::
+
+ vim /etc/ntp.conf
+
+ server kr.pool.ntp.org
+ server time.bora.net
+ server time.kornet.net
+ server  10.0.4.23 local
+
+서비스 등록
+::
+
+ chkconfig ntpd on
+
+ 확인
+ chkconfig --list | grep ntpd
+ ntpd   0:해제 1:해제 2:활성 3:활성 4:활성 5:활성 6:해제
+
+서비스 시작
+::
+
+ service ntpd start
+
+동기화 확인
+::
+
+ ntpq -p
+
+ * : 현재 sync 를 받고 있음을 의미
+ + : ntp 알고리즘에 의해 접속은 가능하지만 sync 를 하고 있지는 않음을 의미
+ - : ntp 알고리즘에 의해 접속은 가능하지만 sync 가능 리스트에서 제외
+ blank : 접속이 불가능함을 의미
 
 2.1.3 시스템 경로 설정
 ~~~~~~~~~~~~~~~~~~~
@@ -142,10 +178,15 @@ scp 사용
 
  cat /proc/cpuinfo |grep model
 
-리눅스 메모리 정보
+리눅스 메모리 정보ㄴㄷㄱ퍛
 ::
 
  cat /proc/meminfo
+
+리눅스 메모리 사용량
+::
+
+ free -m
 
 리눅스 배포버전 확인
 ::
@@ -154,7 +195,7 @@ scp 사용
 
 리눅스 디스크 정보 확인
 ::
-
+ㅇㅁㅅㄷ
  cat /proc/diskstats
 
 리눅스 하드디스크 파티션 용량 확인
@@ -190,38 +231,7 @@ scp 사용
 
 2.1.6 시간(ntp)
 ~~~~~~~~~~~~~~~~~~~~~~~
-설정
-::
 
- vim /etc/ntp.conf
-
- server kr.pool.ntp.org
- server time.bora.net
- server time.kornet.net
-
-서비스 등록
-::
-
- chkconfig ntpd on
-
- 확인
- chkconfig --list | grep ntpd
- ntpd   0:해제 1:해제 2:활성 3:활성 4:활성 5:활성 6:해제
-
-서비스 시작
-::
-
- service ntpd start
-
-동기화 확인
-::
-
- ntpq -p
-
- * : 현재 sync 를 받고 있음을 의미
- + : ntp 알고리즘에 의해 접속은 가능하지만 sync 를 하고 있지는 않음을 의미
- - : ntp 알고리즘에 의해 접속은 가능하지만 sync 가능 리스트에서 제외
- blank : 접속이 불가능함을 의미
 
 2.1.7 기타
 ~~~~~~~~~~~~~~~~~~~~~~

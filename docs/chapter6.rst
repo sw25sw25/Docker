@@ -138,3 +138,24 @@ https://about.gitlab.com/downloads/#centos6
 
  # Restart all GitLab components
  /opt/gitlab/bin/gitlab-ctl restart
+
+6.3 Jenkins
+-------------------------
+
+6.3.1 설치
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+플러그인 설치
+::
+
+
+6.3.2 SSH
+~~~~~~~~~~~~~~~~~
+
+프로젝트 설정
+::
+
+ Source files	target/AMS-1.0.war
+ Remove prefix	target/
+
+ Exec command   chmod 755 /usr/local/tomcat/AMS-1.0.war service tomcat stop
