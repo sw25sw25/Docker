@@ -148,14 +148,68 @@ https://about.gitlab.com/downloads/#centos6
 플러그인 설치
 ::
 
+ Ant Plugin
+ GitHub plugin
+ GitLab Plugin
+ Gradle Plugin
+ Publish Over FTP
+ Publish Over SSH
+
+
 
 6.3.2 SSH
 ~~~~~~~~~~~~~~~~~
+
+시스템 설정
+::
+
+ SSH Servers
+ Name       :   192.168.56.106
+ Hostname   :   192.168.56.106
+ Username   :   root
+ Remote Directory : /usr/local/tomcat/webapps/
+ Passphrase / Password : 비밀번호
 
 프로젝트 설정
 ::
 
  Source files	target/AMS-1.0.war
  Remove prefix	target/
+ Exec command   /usr/local/tomcat/copy.sh
 
- Exec command   chmod 755 /usr/local/tomcat/AMS-1.0.war service tomcat stop
+ copy.sh 스크립트 생성
+
+ #!/bin/sh
+
+ backup="`date '+%m%d_%H%M'`"
+
+ service tomcat stop
+
+ sleep 2
+
+ rm -rf /usr/local/tomcat/webapps/AMS-1.0
+ mv /usr/local/tomcat/webapps/AMS-1.0.war "/usr/local/tomcat/oldwebapps/AMS-1.0.war_$backup"
+ mv /usr/local/tomcat/AMS-1.0.war /usr/local/tomcat/webapps/
+
+ sleep 10
+
+ service tomcat start
+
+ sleep 120
+
+ /etc/init.d/tomcat stop
+
+ sleep 2
+
+ /etc/init.d/tomcat start
+
+6.3.3 메이븐 설정
+~~~~~~~~~~~~~~~~~
+
+프로젝트 설정
+::
+
+ Maven Version : MAVEN_HOME
+ Goals : clean install
+ POM : pom.xml
+
